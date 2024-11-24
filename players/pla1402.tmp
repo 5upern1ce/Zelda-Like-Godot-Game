@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhym5or77ux3n"]
+
+[ext_resource type="Script" path="res://players/player.gd" id="1_0ij1v"]
+[ext_resource type="Texture2D" uid="uid://b1pfeex3u7yho" path="res://players/linkwalk.png" id="2_u466i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n30hl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt6vx"]
+atlas = ExtResource("2_u466i")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4ghj"]
+atlas = ExtResource("2_u466i")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4j5a"]
+atlas = ExtResource("2_u466i")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrku8"]
+atlas = ExtResource("2_u466i")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc003"]
+atlas = ExtResource("2_u466i")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3tlm"]
+atlas = ExtResource("2_u466i")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmwkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt6vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4ghj")
+}],
+"loop": true,
+"name": &"WalkDown",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4j5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrku8")
+}],
+"loop": true,
+"name": &"WalkSide",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc003")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3tlm")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 6.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0ij1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_n30hl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hmwkv")
+animation = &"WalkDown"
